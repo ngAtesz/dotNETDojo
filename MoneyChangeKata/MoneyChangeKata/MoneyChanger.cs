@@ -5,26 +5,27 @@ namespace MoneyChangeKata
 {
     public class MoneyChanger
     {
+        private List<int> _coins = new List<int> { 50, 25, 10, 5, 1 };
+
+        public List<int> Coins
+        {
+            get { return _coins; }
+            set { _coins = value; }
+        }
+
         public Dictionary<int, int> Change(int amount)
         {
-            var result = new Dictionary<int, int>
-            {
-                {50, 0 },
-                {25, 0 },
-                {10, 0 },
-                {5, 0 },
-                {1, 0 }
-            };
+            var result = new Dictionary<int, int>();
 
-            if (amount >= 5)
+            foreach (var coin in _coins)
             {
-                result[5] = amount/5;
-                amount -= result[5]*5;
-            }
-
-            if (amount > 0)
-            {
-                result[1] = amount;
+                var value = 0;
+                if (amount >= coin)
+                {
+                    value = amount / coin;
+                    amount -= value * coin;
+                }
+                result.Add(coin, value);
             }
 
             return result;

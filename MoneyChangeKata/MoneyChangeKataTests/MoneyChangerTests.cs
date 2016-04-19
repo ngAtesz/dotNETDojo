@@ -78,5 +78,41 @@ namespace MoneyChangeKata.Tests
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod()]
+        public void Change_Seven_Returns1Five2One()
+        {
+            var money = 7;
+            var changer = new MoneyChanger();
+            var result = changer.Change(money);
+            var expected = new Dictionary<int, int>
+            {
+                {50, 0 },
+                {25, 0 },
+                {10, 0 },
+                {5, 1 },
+                {1, 2 }
+            };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod()]
+        public void Change_Thirteen_Returns1Ten3One()
+        {
+            var money = 13;
+            var changer = new MoneyChanger();
+            var result = changer.Change(money);
+            var expected = new Dictionary<int, int>
+            {
+                {50, 0 },
+                {25, 0 },
+                {10, 1 },
+                {5, 0 },
+                {1, 3 }
+            };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
