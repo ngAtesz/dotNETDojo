@@ -7,7 +7,7 @@ namespace MoneyChangeKata
     {
         public Dictionary<int, int> Change(int amount)
         {
-            return new Dictionary<int, int>
+            var result = new Dictionary<int, int>
             {
                 {50, 0 },
                 {25, 0 },
@@ -15,6 +15,13 @@ namespace MoneyChangeKata
                 {5, 0 },
                 {1, 0 }
             };
+
+            if (amount > 0)
+            {
+                result[1] = amount;
+            }
+
+            return result;
         }
     }
 }
