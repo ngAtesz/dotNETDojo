@@ -16,6 +16,12 @@ namespace MoneyChangeKata
                 {1, 0 }
             };
 
+            if (amount >= 5)
+            {
+                result[5] = amount/5;
+                amount -= result[5]*5;
+            }
+
             if (amount > 0)
             {
                 result[1] = amount;
