@@ -15,6 +15,11 @@ namespace MoneyChangeKata
 
         public Dictionary<int, int> Change(int amount)
         {
+            if (amount < 0)
+            {
+                throw new ArgumentException("Negative numbers not allowed.");
+            }
+
             var result = new Dictionary<int, int>();
 
             foreach (var coin in _coins)

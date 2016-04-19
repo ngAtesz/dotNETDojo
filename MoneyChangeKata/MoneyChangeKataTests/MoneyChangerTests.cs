@@ -114,5 +114,24 @@ namespace MoneyChangeKata.Tests
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException), "Negative numbers not allowed.")]
+        public void Change_NegativeAmount_ThrowArgumentException()
+        {
+            var money = -13;
+            var changer = new MoneyChanger();
+            var result = changer.Change(money);
+            var expected = new Dictionary<int, int>
+            {
+                {50, 0 },
+                {25, 0 },
+                {10, 1 },
+                {5, 0 },
+                {1, 3 }
+            };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
