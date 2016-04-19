@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace MoneyChangeKata.Tests
 {
@@ -7,9 +8,21 @@ namespace MoneyChangeKata.Tests
     public class MoneyChangerTests
     {
         [TestMethod()]
-        public void ChangeTest()
+        public void Change_Zero_ReturnsDictionaryWithZeroValues()
         {
-            throw new NotImplementedException();
+            var money = 0;
+            var changer = new MoneyChanger();
+            var result = changer.Change(money);
+            var expected = new Dictionary<int, int>
+            {
+                {50, 0 },
+                {25, 0 },
+                {10, 0 },
+                {5, 0 },
+                {1, 0 }
+            };
+
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }
