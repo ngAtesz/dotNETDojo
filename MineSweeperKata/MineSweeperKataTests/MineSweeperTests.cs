@@ -28,5 +28,40 @@ namespace MineSweeperKata.Tests
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod()]
+        public void CountNeighbourMines_OneMine_ReturnsOne()
+        {
+            var sweeper = new MineSweeper();
+            var grid = new char[][]
+            {
+                new char[]{ '.', '.', '.' },
+                new char[]{ '*', '.', '.' },
+                new char[]{ '.', '.', '.' }
+            };
+
+            var expected = 1;
+
+            var result = sweeper.CountNeighbourMines(grid, 0, 0);
+
+            Assert.AreEqual(expected, result);
+        }
+        
+        [TestMethod()]
+        public void CountNeighbourMines_TwoMine_ReturnsTwo()
+        {
+            var sweeper = new MineSweeper();
+            var grid = new char[][]
+            {
+                new char[]{ '*', '.', '.' },
+                new char[]{ '*', '.', '.' },
+                new char[]{ '.', '.', '.' }
+            };
+
+            var expected = 2;
+            var result = sweeper.CountNeighbourMines(grid, 0, 1);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
