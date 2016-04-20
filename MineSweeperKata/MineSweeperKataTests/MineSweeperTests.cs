@@ -1,17 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MineSweeperKata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MineSweeperKata.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class MineSweeperTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void IsMine_Asterix_ReturnsTrue()
         {
             var sweeper = new MineSweeper();
@@ -20,7 +14,7 @@ namespace MineSweeperKata.Tests
             Assert.IsTrue(result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void IsMine_NotAsterix_ReturnsFalse()
         {
             var sweeper = new MineSweeper();
@@ -29,7 +23,7 @@ namespace MineSweeperKata.Tests
             Assert.IsFalse(result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CountNeighbourMines_OneMine_ReturnsOne()
         {
             var sweeper = new MineSweeper();
@@ -47,7 +41,7 @@ namespace MineSweeperKata.Tests
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CountNeighbourMines_TwoMine_ReturnsTwo()
         {
             var sweeper = new MineSweeper();
@@ -64,7 +58,7 @@ namespace MineSweeperKata.Tests
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CountNeighbourMines_1MineAndGivenCoordinateAtBottomCorner_ReturnsOne()
         {
             var sweeper = new MineSweeper();
@@ -81,7 +75,7 @@ namespace MineSweeperKata.Tests
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CountNeighbourMines_EmptyGrid_ReturnsZero()
         {
             var sweeper = new MineSweeper();
@@ -93,7 +87,7 @@ namespace MineSweeperKata.Tests
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Solve_GridWithOneMine_ReturnsSolutionGrid()
         {
             var sweeper = new MineSweeper();

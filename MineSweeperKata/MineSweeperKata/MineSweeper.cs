@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-
-namespace MineSweeperKata
+﻿namespace MineSweeperKata
 {
     public class MineSweeper
     {
@@ -16,9 +13,11 @@ namespace MineSweeperKata
             new []{ 1, 1 }
         };
 
+        private readonly char _mineSign = '*';
+
         public bool IsMine(char field)
         {
-            return field == '*';
+            return field == _mineSign;
         }
 
         public int CountNeighbourMines(char[][] grid, int x, int y)
@@ -30,7 +29,7 @@ namespace MineSweeperKata
                 var neighbourX = x + direction[0];
                 var neighbourY = y + direction[1];
 
-                if (neighbourIsOnTheGrid(neighbourX, neighbourY, grid)
+                if (NeighbourIsOnTheGrid(neighbourX, neighbourY, grid)
                     && IsMine(grid[neighbourX][neighbourY]))
                 {
                     count++;
@@ -38,17 +37,6 @@ namespace MineSweeperKata
             }
 
             return count;
-        }
-
-        private static bool neighbourIsOnTheGrid(int neighbourX, int neighbourY, char[][] grid)
-        {
-            var maxX = grid.Length;
-            var maxY = grid.Length > 0 ? grid[0].Length : 0;
-
-            return neighbourX >= 0
-                   && neighbourY >= 0
-                   && neighbourX < maxX
-                   && neighbourY < maxY;
         }
 
         public char[][] Solve(char[][] grid)
@@ -64,7 +52,7 @@ namespace MineSweeperKata
                 {
                     if (IsMine(grid[i][j]))
                     {
-                        result[i][j] = '*';
+                        result[i][j] = _mineSign;
                     }
                     else
                     {
@@ -74,6 +62,17 @@ namespace MineSweeperKata
             }
 
             return result;
+        }
+
+        private static bool NeighbourIsOnTheGrid(int neighbourX, int neighbourY, char[][] grid)
+        {
+            var maxX = grid.Length;
+            var maxY = grid.Length > 0 ? grid[0].Length : 0;
+
+            return neighbourX >= 0
+                   && neighbourY >= 0
+                   && neighbourX < maxX
+                   && neighbourY < maxY;
         }
     }
 }
