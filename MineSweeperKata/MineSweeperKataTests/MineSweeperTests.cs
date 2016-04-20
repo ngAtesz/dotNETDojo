@@ -46,7 +46,7 @@ namespace MineSweeperKata.Tests
 
             Assert.AreEqual(expected, result);
         }
-        
+
         [TestMethod()]
         public void CountNeighbourMines_TwoMine_ReturnsTwo()
         {
@@ -60,6 +60,35 @@ namespace MineSweeperKata.Tests
 
             var expected = 2;
             var result = sweeper.CountNeighbourMines(grid, 0, 1);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod()]
+        public void CountNeighbourMines_1MineAndGivenCoordinateAtBottomCorner_ReturnsOne()
+        {
+            var sweeper = new MineSweeper();
+            var grid = new char[][]
+            {
+                new char[]{ '*', '.', '.' },
+                new char[]{ '*', '.', '.' },
+                new char[]{ '.', '.', '.' }
+            };
+
+            var expected = 0;
+            var result = sweeper.CountNeighbourMines(grid, 2, 2);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod()]
+        public void CountNeighbourMines_EmptyGrid_ReturnsZero()
+        {
+            var sweeper = new MineSweeper();
+            var grid = new char[][] { };
+
+            var expected = 0;
+            var result = sweeper.CountNeighbourMines(grid, 2, 2);
 
             Assert.AreEqual(expected, result);
         }

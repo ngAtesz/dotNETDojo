@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MineSweeperKata
+﻿namespace MineSweeperKata
 {
     public class MineSweeper
     {
-        private readonly int[][] _directions = new[]
-        {
+        private readonly int[][] _directions = {
             new []{ -1, -1 },
             new []{ -1, 0 },
             new []{ -1, 1 },
@@ -30,9 +26,8 @@ namespace MineSweeperKata
             {
                 var neighbourX = x + direction[0];
                 var neighbourY = y + direction[1];
-
-                if (neighbourX >= 0
-                    && neighbourY >= 0
+                
+                if (neighbourIsOnTheGrid(neighbourX, neighbourY, grid)
                     && IsMine(grid[neighbourX][neighbourY]))
                 {
                     count++;
@@ -40,6 +35,17 @@ namespace MineSweeperKata
             }
 
             return count;
+        }
+
+        private static bool neighbourIsOnTheGrid(int neighbourX, int neighbourY, char[][] grid)
+        {
+            var maxX = grid.Length;
+            var maxY = grid.Length > 0 ? grid[0].Length : 0;
+
+            return neighbourX >= 0
+                   && neighbourY >= 0
+                   && neighbourX < maxX
+                   && neighbourY < maxY;
         }
     }
 }
