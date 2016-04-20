@@ -1,4 +1,7 @@
-﻿namespace MineSweeperKata
+﻿using System;
+using System.Collections;
+
+namespace MineSweeperKata
 {
     public class MineSweeper
     {
@@ -26,7 +29,7 @@
             {
                 var neighbourX = x + direction[0];
                 var neighbourY = y + direction[1];
-                
+
                 if (neighbourIsOnTheGrid(neighbourX, neighbourY, grid)
                     && IsMine(grid[neighbourX][neighbourY]))
                 {
@@ -46,6 +49,31 @@
                    && neighbourY >= 0
                    && neighbourX < maxX
                    && neighbourY < maxY;
+        }
+
+        public char[][] Solve(char[][] grid)
+        {
+            var result = new char[grid.Length][];
+
+            for (var i = 0; i < grid.Length; i++)
+            {
+                var sizeY = grid[i].Length;
+                result[i] = new char[sizeY];
+
+                for (var j = 0; j < sizeY; j++)
+                {
+                    if (IsMine(grid[i][j]))
+                    {
+                        result[i][j] = '*';
+                    }
+                    else
+                    {
+                        result[i][j] = (char)CountNeighbourMines(grid, i, j);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

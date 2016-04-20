@@ -33,11 +33,11 @@ namespace MineSweeperKata.Tests
         public void CountNeighbourMines_OneMine_ReturnsOne()
         {
             var sweeper = new MineSweeper();
-            var grid = new char[][]
+            var grid = new[]
             {
-                new char[]{ '.', '.', '.' },
-                new char[]{ '*', '.', '.' },
-                new char[]{ '.', '.', '.' }
+                new[]{ '.', '.', '.' },
+                new[]{ '*', '.', '.' },
+                new[]{ '.', '.', '.' }
             };
 
             var expected = 1;
@@ -51,11 +51,11 @@ namespace MineSweeperKata.Tests
         public void CountNeighbourMines_TwoMine_ReturnsTwo()
         {
             var sweeper = new MineSweeper();
-            var grid = new char[][]
+            var grid = new[]
             {
-                new char[]{ '*', '.', '.' },
-                new char[]{ '*', '.', '.' },
-                new char[]{ '.', '.', '.' }
+                new[]{ '*', '.', '.' },
+                new[]{ '*', '.', '.' },
+                new[]{ '.', '.', '.' }
             };
 
             var expected = 2;
@@ -68,11 +68,11 @@ namespace MineSweeperKata.Tests
         public void CountNeighbourMines_1MineAndGivenCoordinateAtBottomCorner_ReturnsOne()
         {
             var sweeper = new MineSweeper();
-            var grid = new char[][]
+            var grid = new[]
             {
-                new char[]{ '*', '.', '.' },
-                new char[]{ '*', '.', '.' },
-                new char[]{ '.', '.', '.' }
+                new[]{ '*', '.', '.' },
+                new[]{ '*', '.', '.' },
+                new[]{ '.', '.', '.' }
             };
 
             var expected = 0;
@@ -91,6 +91,31 @@ namespace MineSweeperKata.Tests
             var result = sweeper.CountNeighbourMines(grid, 2, 2);
 
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod()]
+        public void Solve_GridWithOneMine_ReturnsSolutionGrid()
+        {
+            var sweeper = new MineSweeper();
+            var grid = new[]
+            {
+                new[]{ '.', '.', '.' },
+                new[]{ '*', '.', '.' },
+                new[]{ '.', '.', '.' }
+            };
+
+            var solutionGrid = new[]
+            {
+                new[]{ (char)1, (char)1, (char)0 },
+                new[]{ '*', (char)1, (char)0 },
+                new[]{ (char)1, (char)1, (char)0 }
+            };
+
+            var result = sweeper.Solve(grid);
+
+            CollectionAssert.AreEqual(solutionGrid[0], result[0]);
+            CollectionAssert.AreEqual(solutionGrid[1], result[1]);
+            CollectionAssert.AreEqual(solutionGrid[2], result[2]);
         }
     }
 }
