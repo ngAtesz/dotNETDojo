@@ -16,7 +16,7 @@ Have you ever played Minesweeper? It's a cute little game which comes within a c
 The same field including the hint numbers described above would look like this:
 
 |*|1|0|0|
-|-|-|-|-|
+|---|---|---|---|
 |2|2|1|0|
 |1|*|1|0|
 |1|1|1|0|
@@ -42,7 +42,7 @@ This is the acceptance test input:
 ### 4 4
 
 |*|.|.|.|
-|-|-|-|-|
+|---|---|---|---|
 |*|.|.|.|
 |.|*|.|.|
 |.|.|.|.|
@@ -50,7 +50,7 @@ This is the acceptance test input:
 ### 3 5
 
 |*|*|.|.|.|
-|-|-|-|-|-|
+|---|---|---|---|---|
 |.|.|.|.|.|
 |.|*|.|.|.|
 
@@ -60,13 +60,13 @@ This is the acceptance test input:
 ### Field #1:
 
 |*|1|0|0|
-|-|-|-|-|
+|---|---|---|---|
 |2|2|1|0|
 |1|*|1|0|
 |1|1|1|0|
 
 ### Field #2:
 |*|*|1|0|0|
-|-|-|-|-|-|
+|---|---|---|---|---|
 |3|3|2|0|0|
 |1|*|1|0|0|
